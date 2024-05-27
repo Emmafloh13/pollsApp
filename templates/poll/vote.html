@@ -2,13 +2,22 @@
 {% block  title %} Vota {% endblock %}
 
 {% block content %}
+
 <h1>{{ question.question_text }}</h1>
 
 <ul>
-    <h2>Elige una opcion</h2> 
-    {% for c in question.choice_set.all %}
-   <li>{{ c.choice_text }}</li>
-   {% endfor %}
+    <h2> Elige bien </h2>
+    <form method="post">
+        {% csrf_token %}
+        {% for c in question.choice_set.all %}
+        <input 
+        type="radio"
+        name="choice"
+        id="c_{{c.id}}"
+        value="{{c.id}}"/> 
+        <label for="c_{{c.id}}">{{ c.choice_text }}</label>
+        {% endfor %}
+        <input type="submit" value ="Votar">
+    </form>
 </ul>
-
 {% endblock %}

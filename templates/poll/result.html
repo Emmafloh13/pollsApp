@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %} Resultados {% endblock %}
+
+{% block content %}
+<h1> {{ question.question_text }}</h1>
+<lu>
+    {% for c in question.choice_set.all %}
+    <li>{{ c.choice_text }} - {{ c.vote }} voto{{ c.vote | pluralize }} </li>
+    {% endfor %}
+</ul>
+<hr>
+<a href="{% url 'poll:home' %}"> Encuestas </a>
+{% endblock %}
