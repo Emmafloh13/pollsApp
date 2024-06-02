@@ -5,7 +5,8 @@
 <h1>Encuestas</h1>
 
 <ul>{% for q in questions %}
-<li><a href="{% url 'poll:vote' q.id %}">{{ q  }}</li>
+<li><a href="{% url 'poll:vote' q.id %}">{{ q  }}</a>
+    <a href="{%url 'poll:result' q.id %}">Ver Resultados</a></li>
 {% endfor %} 
 </ul>
 
